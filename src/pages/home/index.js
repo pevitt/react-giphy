@@ -4,7 +4,7 @@ import { Link, useLocation } from 'wouter'
 const POPULATE_GIFS = ["matrix", "venezuela", "chile", "colombia"]
 
 export default function Home() {
-    const [keyword, setkeyword] = useState('')
+    const [keyword, setkeyword] = useState('morty')
     const [path, pushLocation] = useLocation()
 
     const handleSubmit = evt => {

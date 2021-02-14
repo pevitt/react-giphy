@@ -12,6 +12,7 @@ export default function getGifs({keyword = 'morty'} = {}){
             
             return { title, id, url };
         });
+        console.log(gifs);
         return gifs;
       })
 }
