@@ -1,5 +1,6 @@
 import React from 'react'
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
+import Spinner from '../../components/Spinner/Spinner'
 import {useGifs} from '../../hooks/useGifs'
 
 
@@ -9,7 +10,7 @@ export default function SearchResults ({ params }) {
 
   return <>
     {loading
-      ? <span>Cargando...</span>
+      ? <Spinner />
       : <>
           <ListOfGifs gifs={gifs} />
       </>

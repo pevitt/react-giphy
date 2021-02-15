@@ -1,5 +1,5 @@
 const apiKey = '4f9247102eec4d87b26bd9519aec124e'
-export default function getGifs({keyword = 'morty'} = {}){
+export default function getGifs({keyword} = {}){
     const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`
     return fetch(apiURL)
       .then(res => res.json())
@@ -12,7 +12,7 @@ export default function getGifs({keyword = 'morty'} = {}){
             
             return { title, id, url };
         });
-        console.log(gifs);
+        
         return gifs;
       })
 }

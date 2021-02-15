@@ -1,11 +1,15 @@
 import React, {useState} from 'react'
 import { Link, useLocation } from 'wouter'
+import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
+import Spinner from '../../components/Spinner/Spinner'
+import {useGifs} from '../../hooks/useGifs'
 
 const POPULATE_GIFS = ["matrix", "venezuela", "chile", "colombia"]
 
 export default function Home() {
-    const [keyword, setkeyword] = useState('morty')
+    const [keyword, setkeyword] = useState('')
     const [path, pushLocation] = useLocation()
+    const { loading, gifs } = useGifs()
 
     const handleSubmit = evt => {
         evt.preventDefault()
@@ -22,8 +26,15 @@ export default function Home() {
             <form onSubmit={handleSubmit} >
                 <input placeholder="Search gifs..." onChange={handleInput} type="text" value={keyword} />
             </form>
-            <h3>Los gifs mas populares</h3>
-            <ul>
+            <h3>Ultimos gifs buscados</h3>
+            {
+                 loading
+                 ? <Spinner />
+                 : <>
+                     <ListOfGifs gifs={gifs} />
+                 </>
+            }
+            {/* <ul>
                 {
                     POPULATE_GIFS.map((populate) => (
                         <li key={populate}>
@@ -31,7 +42,7 @@ export default function Home() {
                         </li>
                     ))
                 }
-            </ul>
+            </ul> */}
         </>
     );
 
